@@ -1,5 +1,5 @@
 #include "kalman_filter.h"
-
+#include <math.h>
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
@@ -42,4 +42,31 @@ void KalmanFilter::Update(const VectorXd &z) {
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /* TODO: update the state by using Extended Kalman Filter equations */
+  double px = x_(0);   // predicted position - x
+  double py = x_(1);   // predicted position - y
+  double vx = x_(2);   // predicted speed - x
+  double vy = x_(3);   // predicted speed - y
+  VectorXd h_x(3, 1);
+  double s = px * px + py * py;
+  // check division by zeros
+  try {
+    if (s==0){
+      throw string("Error! Division by Zero. Check x_state.");
+    }
+    h_x << sqrt(s),
+           atan2(py, px),
+           (px*vx + py*vy) / sqrt(s);
+  }
+  catch (string &e){
+    cout << e << endl;
+  }
+
+  VectorXd y = z - h_x;   // y = 3x1 - 3x1 = 3x1
+  MatrixXd S = H_ * P_ * H_.transpose() + R_;   // S = 3x4 * 4x4 * 4x3 + 3x3 = 3x3
+  MatrixXd K = P_ * H_.transpose() * S.inverse();   // K = 4x4 * 4x3 * 3x3 = 4x3
+  // new estimate
+  x_ = x_ + (K * y);   // x_ = 4x1 + (4x3 * 3x1) = 4x1
+  int x_size = x_.size();
+  MatrixXd I = MatrixXd::Identity(x_size, x_size);
+  P_ = (I - (K * H_)) * P_;   // P_ = (4x4 - (4x3 * 3x4)) * 4x4 = 4x4
 }
