@@ -57,7 +57,7 @@ int main() {
         if (event == "telemetry") {
           // j[1] is the data JSON object
           string sensor_measurement = j[1]["sensor_measurement"];
-          
+
           MeasurementPackage meas_package;
           std::istringstream iss(sensor_measurement);
 
