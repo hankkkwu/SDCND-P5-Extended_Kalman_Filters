@@ -1,7 +1,13 @@
 #include "kalman_filter.h"
+#include <iostream>
+#include <string>
 #include <cmath>
+
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
+using std::cout;
+using std::endl;
+using std::string;
 
 /*
  * Please note that the Eigen library does not initialize
@@ -65,10 +71,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   // Normalizing Angles
   double phi = y(1);
   while (phi < -M_PI){
-    phi += M_PI;
+    phi += 2 * M_PI;
   }
   while (phi > M_PI){
-    phi -= M_PI;
+    phi -= 2 * M_PI;
   }
   y(1) = phi;
 
