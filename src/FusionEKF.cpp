@@ -38,10 +38,6 @@ FusionEKF::FusionEKF() {
    * TODO: Set the process and measurement noises
    */
 
-  // measurement function H_laser_
-  H_laser_ << 1, 0, 0, 0,
-              0, 1, 0, 0;
-
   // initial transition matrix F_
   ekf_.F_ = MatrixXd(4,4);
   ekf_.F_ << 1, 0, 1, 0,
@@ -69,8 +65,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * You'll need to convert radar from polar to cartesian coordinates.
      */
     // state covariance matrix P_
-    ekf.P_ = MatrixXd(4,4);
-    ekf.P_ << 1, 0, 0, 0,
+    ekf_.P_ = MatrixXd(4,4);
+    ekf_.P_ << 1, 0, 0, 0,
               0, 1, 0, 0,
               0, 0, 1000, 0,
               0, 0, 0, 1000;
@@ -91,13 +87,18 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       Hj_ = tools.CalculateJacobian(ekf_.x_);
       ekf_.H_ = MatrixXd(3,4);
       ekf_.H_ = Hj_;
+      ekf_.R_ = R_radar_;
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // TODO: Initialize state.
       ekf_.x_(0) = measurement_pack.raw_measurements_[0];
       ekf_.x_(1) = measurement_pack.raw_measurements_[1];
+      // measurement function H_laser_
+      H_laser_ << 1, 0, 0, 0,
+                  0, 1, 0, 0;
       ekf_.H_ = MatrixXd(2,4);
       ekf_.H_ = H_laser_;
+      ekf_.R_ = R_laser_;
     }
 
     // initializing time stamp
@@ -148,10 +149,19 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // TODO: Radar updates
-    ekf_.UpdateEKF(measurement_pack.raw_measurements_)
+    Hj_ = tools.CalculateJacobian(ekf_.x_);
+    ekf_.H_ = MatrixXd(3,4);
+    ekf_.H_ = Hj_;
+    ekf_.R_ = R_radar_;
+    ekf_.UpdateEKF(measurement_pack.raw_measurements_);
 
   } else {
     // TODO: Laser updates
+    H_laser_ << 1, 0, 0, 0,
+                0, 1, 0, 0;
+    ekf_.H_ = MatrixXd(2,4);
+    ekf_.H_ = H_laser_;
+    ekf_.R_ = R_laser_;
     ekf_.Update(measurement_pack.raw_measurements_);
   }
 
