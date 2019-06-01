@@ -47,13 +47,6 @@ FusionEKF::FusionEKF() {
 
   //  initializing process covariance matrix Q_
   ekf_.Q_ = MatrixXd(4,4);
-
-  // state covariance matrix P_
-  ekf_.P_ = MatrixXd(4,4);
-  ekf_.P_ << 1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1000, 0,
-            0, 0, 0, 1000;
 }
 
 /**
@@ -91,6 +84,13 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       ekf_.x_(0) = measurement_pack.raw_measurements_[0];   // px
       ekf_.x_(1) = measurement_pack.raw_measurements_[1];   // py
     }
+
+    // state covariance matrix P_
+    ekf_.P_ = MatrixXd(4,4);
+    ekf_.P_ << 1, 0, 0, 0,
+              0, 1, 0, 0,
+              0, 0, 1000, 0,
+              0, 0, 0, 1000;
 
     // initializing time stamp
     previous_timestamp_ = measurement_pack.timestamp_;
