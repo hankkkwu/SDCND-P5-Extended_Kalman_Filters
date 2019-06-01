@@ -53,11 +53,11 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   float py = x_state(1);
   float vx = x_state(2);
   float vy = x_state(3);
-
   float s = px * px + py * py;
+
   // check division by zeros
   try {
-    if (s==0){
+    if (s<0.0001){
       throw string("Error! Division by Zero. Check x_state.");
     }
   }
@@ -67,7 +67,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   }
   // compute the Jacobian matrix
   Hj << px/sqrt(s), py/sqrt(s), 0, 0,
-        -py/s, px/s, 0, 0,
-        py*(vx*py-vy*px)/pow(s, 3/2), px*(vy*px-vx*py)/pow(s, 3/2), px/sqrt(s), py/sqrt(s);
+        -(py/s), px/s, 0, 0,
+        py*(vx*py-vy*px)/pow(s, 1.5), px*(vy*px-vx*py)/pow(s, 1.5), px/sqrt(s), py/sqrt(s);
   return Hj;
 }
