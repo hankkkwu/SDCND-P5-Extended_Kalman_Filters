@@ -8,30 +8,30 @@ In this project I utilize a kalman filter to estimate the state of a moving obje
 
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases).
 
-This repository includes two files that can be used to set up and install [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) for either Linux or Mac systems. For windows you can use either Docker, VMware, or even Windows 10 Bash on Ubuntu to install uWebSocketIO.
+For windows you can use either Docker, VMware, or even Windows 10 Bash on Ubuntu to install uWebSocketIO.
 
 Here's steps for Ubuntu BASH:
 * Follow this [step by step guide](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) for setting up the utility.
 * After setting up Ubuntu BASH, open Ubuntu Bash, and run the following commands inside the Linux Bash Shell:
-  1. `sudo apt-get update`
-  2. `sudo apt-get install git`
-  3. `sudo apt-get install cmake`
-  4. `sudo apt-get install openssl`
-  5. `sudo apt-get install libssl-dev`
-  6. `sudo apt install zlib1g-dev`
-  7. `git clone https://github.com/hankkkwu/SDCND-P5-Extended_Kalman_Filters.git`
-  8. `sudo rm /usr/lib/libuWS.so`
-  9. navigate to CarND-Kidnapped-Vehicle-Project/
-  10. `./install-ubuntu.sh`
-  11. at the top level of the project repository `mkdir build && cd build`
-  12. from /build `cmake .. && make`
-  13. Launch the simulator from Windows and execute `./ExtendedKF` for the project. If you see this message `Listening to port 4567` `Connected!!!`, it is working!!
+1. `sudo apt-get update`
+2. `sudo apt-get install git`
+3. `sudo apt-get install cmake`
+4. `sudo apt-get install openssl`
+5. `sudo apt-get install libssl-dev`
+6. `sudo apt install zlib1g-dev`
+7. `git clone https://github.com/hankkkwu/SDCND-P5-Extended_Kalman_Filters.git`
+8. `sudo rm /usr/lib/libuWS.so`
+9. navigate to SDCND-P5-Extended_Kalman_Filters
+10. `./install-ubuntu.sh`
+11. at the top level of the project repository `mkdir build && cd build`
+12. from /build `cmake .. && make`
+13. Launch the simulator from Windows and execute `./ExtendedKF` for the project. If you see this message `Listening to port 4567` `Connected!!!`, it is working!!
 * Trouble Shooting
   **.sh files not recognized on run**: Try `chmod a+x <filename.sh>` for example `chmod a+x install-ubuntu.sh`
 
-## Installation and environment set up for Mac
+## Installation and environment set up for Mac uers
 
-his project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases).
+This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases).
 
 This repository includes two files that can be used to set up and install [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) for either Linux or Mac systems.
 
