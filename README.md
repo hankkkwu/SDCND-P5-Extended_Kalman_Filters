@@ -28,7 +28,7 @@ Here's steps for Ubuntu BASH:
 13. Launch the simulator from Windows and execute `./ExtendedKF` for the project. If you see this message `Listening to port 4567` `Connected!!!`, it is working!!
 * Trouble Shooting
 
-  **.sh files not recognized on run**: Try `chmod a+x <filename.sh>` for example `chmod a+x install-ubuntu.sh`
+  * **.sh files not recognized on run**: Try `chmod a+x <filename.sh>` for example `chmod a+x install-ubuntu.sh`
 
 ## Installation and environment set up for Mac uers
 
@@ -42,8 +42,9 @@ Some users report needing to use `cmakepatch.txt` which is automatically referen
 
 * Trouble Shooting
 
-  **.sh files not recognized on run**: Try chmod a+x <filename.sh> for example chmod a+x install-mac.sh
-  **missing openssl, libuv, or cmake**: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running install-mac.sh again.
+  * **.sh files not recognized on run**: Try chmod a+x <filename.sh> for example chmod a+x install-mac.sh
+
+  * **missing openssl, libuv, or cmake**: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running install-mac.sh again.
 
 ## Other Important Dependencies
 
