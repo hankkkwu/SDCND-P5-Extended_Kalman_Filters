@@ -27,6 +27,7 @@ Here's steps for Ubuntu BASH:
 12. from /build `cmake .. && make`
 13. Launch the simulator from Windows and execute `./ExtendedKF` for the project. If you see this message `Listening to port 4567` `Connected!!!`, it is working!!
 * Trouble Shooting
+
   **.sh files not recognized on run**: Try `chmod a+x <filename.sh>` for example `chmod a+x install-ubuntu.sh`
 
 ## Installation and environment set up for Mac uers
@@ -40,6 +41,7 @@ From the project repository directory run the script: `install-mac.sh`
 Some users report needing to use `cmakepatch.txt` which is automatically referenced and is also located in the project repository directory.
 
 * Trouble Shooting
+
   **.sh files not recognized on run**: Try chmod a+x <filename.sh> for example chmod a+x install-mac.sh
   **missing openssl, libuv, or cmake**: install-mac.sh contains the line `brew install openssl libuv cmake`, which will not execute properly if `homebrew` is not installed. To determine if `homebrew` is installed, execute `which brew` in a terminal. If a path returns it is installed, otherwise you see `brew not found`. Follow the guidance [here](https://brew.sh/) to install homebrew, then try running install-mac.sh again.
 
