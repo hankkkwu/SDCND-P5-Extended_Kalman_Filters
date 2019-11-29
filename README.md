@@ -1,7 +1,11 @@
 # Extended Kalman Filter Project
 Self-Driving Car Engineer Nanodegree Program
 
-In this project I utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. You can find the project code in [src](https://github.com/hankkkwu/SDCND-P5-Extended_Kalman_Filters/tree/master/src) folder and [video](https://github.com/hankkkwu/SDCND-P5-Extended_Kalman_Filters/blob/master/EKF_project_video.mp4) of how my code works in the simulator.
+In this project I utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. You can find the project code in [src](https://github.com/hankkkwu/SDCND-P5-Extended_Kalman_Filters/tree/master/src) folder.
+
+Here is the video of how my my code work in the simulator:
+
+[![result video](http://img.youtube.com/vi/IZhRLrUbX0g/0.jpg)](https://www.youtube.com/watch?v=IZhRLrUbX0g "EKF project")
 
 
 ## Installation and environment set up for Windows 10 users
