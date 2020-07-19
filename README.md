@@ -4,6 +4,7 @@ Self-Driving Car Engineer Nanodegree Program
 In this project I utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. You can find the project code in [src](https://github.com/hankkkwu/SDCND-P5-Extended_Kalman_Filters/tree/master/src) folder.
 
 Here is the video of how my my code work in the simulator:
+(Lidar measurements are red circles, radar measurements are blue circles with an arrow pointing in the direction of the observed angle, and estimation markers are green triangles.)
 
 [![result video](http://img.youtube.com/vi/IZhRLrUbX0g/0.jpg)](https://www.youtube.com/watch?v=IZhRLrUbX0g "EKF project")
 
